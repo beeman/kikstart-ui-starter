@@ -2,7 +2,7 @@ import { UiLayout } from '@kikstart/ui';
 
 export const appLayout: UiLayout = {
   brand: {
-    logo: '/assets/logo.svg',
+    logo: 'assets/logo.svg',
     name: 'kikstart.dev',
     product: 'ui-starter',
     separator: '|',

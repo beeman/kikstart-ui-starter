@@ -6,6 +6,7 @@
     "start": "ng serve",
     "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
     "build": "ng build --prod",
+    "postbuild": "cp -v dist/kikstart-ui-starter/index.html dist/kikstart-ui-starter/404.html",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
