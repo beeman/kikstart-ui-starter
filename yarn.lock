@@ -854,10 +854,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@kikstart/ui@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.4.0.tgz#95bd1d6445b7695da8cef5b0d7e69bb0313ae5b5"
-  integrity sha512-sBYEqBnt3XIRgIdimyHCXnUTRCQlej4L+2NET7Zdgt5gMht8GuSkhj+fM/ef66rwPsW+0p8WmcV/8iGb5A+BxA==
+"@kikstart/ui@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.5.0.tgz#5d013383061baf87f8c01be9628640805adff9d0"
+  integrity sha512-on5VE/wZgTpr4oE83DiXUebnZbP1IZS2r045FEIq1JqfxidyVqE5XKJXgfcecBstEEzwzACXzAkr6r56fWFkYA==
   dependencies:
     tslib "^1.9.0"
 
