@@ -21,7 +21,7 @@
     "@angular/platform-browser": "8.2.14",
     "@angular/platform-browser-dynamic": "8.2.14",
     "@angular/router": "8.2.14",
-    "@kikstart/ui": "1.6.0",
+    "@kikstart/ui": "1.7.0",
     "@ngx-formly/bootstrap": "5.5.6",
     "@ngx-formly/core": "5.5.6",
     "bootstrap": "4.4.1",
