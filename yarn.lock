@@ -854,7 +854,7 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@kikstart/ui@^1.8.0":
+"@kikstart/ui@1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.8.0.tgz#7a29a8466f7d4afd1851695a3a5827831ed82a4d"
   integrity sha512-OuWjGw47ZpIYIRfvmiff+n+JSGTDE+Ddw7Z0H/bskAhLUP24EQj68//VH+xNdN3vr08hC3JKw7wj20YfM6U0ew==
