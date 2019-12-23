@@ -69,8 +69,6 @@ THE SOFTWARE.
 @ngx-formly/bootstrap
 MIT
 
-@ngx-formly/bootstrap/addons
-
 @ngx-formly/core
 MIT
 
@@ -174,16 +172,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-
-ngx-bootstrap/component-loader
-
-ngx-bootstrap/dropdown
-
-ngx-bootstrap/modal
-
-ngx-bootstrap/positioning
-
-ngx-bootstrap/utils
 
 ngx-timeago
 MIT
@@ -531,7 +519,7 @@ zone.js
 MIT
 The MIT License
 
-Copyright (c) 2016-2018 Google, Inc.
+Copyright (c) 2010-2019 Google LLC. http://angular.io/license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
