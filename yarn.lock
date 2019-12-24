@@ -889,10 +889,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@kikstart/ui@1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.9.3.tgz#bea3c86ba8512ecb4f114b0d3d347c402b833c72"
-  integrity sha512-4svhzGhaysjfOmrzjaiuI5NO6K+qqvE3g2Dm+Q4rHQpErGhp5BwVGAOMGrVwFY44zNnOhMU6MrhROAWaSEceLA==
+"@kikstart/ui@1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.9.4.tgz#4d98faf9ac4aa2458146dda2ad97004759420066"
+  integrity sha512-OWT6Kkdq/99bKJYYa0FhuauxscTdSoVBAkBlowRrVvLuORnersoIqxRpqVzp0Aj9G/UErmpQ0sMjwyTxdJqkHA==
   dependencies:
     tslib "^1.9.0"
 
