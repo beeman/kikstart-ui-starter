@@ -8,6 +8,7 @@ export const appRoutes: Routes = [
     component: AppLayoutComponent,
     children: [
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+      { path: 'feed', loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule) },
       { path: 'docs', loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule) },
       { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
       {
