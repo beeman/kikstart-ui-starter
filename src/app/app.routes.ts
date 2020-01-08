@@ -11,6 +11,7 @@ export const appRoutes: Routes = [
       { path: 'feed', loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule) },
       { path: 'docs', loadChildren: () => import('./docs/docs.module').then(m => m.DocsModule) },
       { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
+      { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
       {
         path: 'style-guide',
         loadChildren: () => import('./style-guide/style-guide.module').then(m => m.StyleGuideModule),
