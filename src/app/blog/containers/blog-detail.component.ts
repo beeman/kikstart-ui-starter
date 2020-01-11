@@ -6,25 +6,23 @@ import { BlogService } from '../services/blog.service';
 
 @Component({
   template: `
-    <ui-data [data]="data$ | async" [outlet]="outlet"> </ui-data>
-
-    <ng-template #outlet let-data="data" let-errors="errors">
-      <ui-debug *ngIf="errors && errors.length" label="Errors" [data]="errors"></ui-debug>
-      <app-post-detail *ngIf="data" [post]="data"></app-post-detail>
-    </ng-template>
+    <ng-container *ngIf="data$ | async as data">
+      <app-post-detail [post]="data"></app-post-detail>
+    </ng-container>
   `,
 })
 export class BlogDetailComponent implements OnInit {
-  public url: string;
+  public id: string;
   public data$: Observable<any>;
 
   constructor(public route: ActivatedRoute, public service: BlogService) {}
 
   ngOnInit() {
-    this.data$ = this.route.url.pipe(
-      map(segments => segments.map(segment => segment.path).join('/')),
-      tap(url => (this.url = url)),
-      switchMap(url => this.service.getPost(url)),
+    this.data$ = this.route.params.pipe(
+      map(params => params.id),
+      tap(id => console.log(id)),
+      tap(id => (this.id = id)),
+      switchMap(id => this.service.getPost(id)),
     );
   }
 }

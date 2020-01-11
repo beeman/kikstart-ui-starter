@@ -7,11 +7,11 @@ import { UiBrand } from '@kikstart/ui';
 
 @Component({
   template: `
-    <ui-hero [brand]="brand" [description]="brand.description" [link]="link" [cards]="cards"></ui-hero>
+    <ui-hero [brand]="brand" brandSize="lg" [description]="brand.description" [link]="link" [cards]="cards"></ui-hero>
   `,
 })
 export class HomeIndexComponent implements OnInit {
-  brand: UiBrand = { ...appLayout.brand, size: 'lg' };
+  brand: UiBrand = appLayout.brand;
   link: UiLink = {
     path: '/docs',
     label: 'Learn more',

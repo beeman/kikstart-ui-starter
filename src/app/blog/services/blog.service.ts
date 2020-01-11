@@ -1,30 +1,20 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
-import { UiLink } from '@kikstart/ui';
-import { Post } from '../interface/post';
+import { FakerService, FakePost } from '../../faker.service';
 
-import postsJson from '../../content/posts.json';
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class BlogService {
-  public documents: { [key: string]: Post } = {};
+  public posts: BehaviorSubject<FakePost[]>;
+  public posts$: Observable<FakePost[]>;
 
-  constructor() {
-    this.documents = this.readDocuments(postsJson);
+  constructor(private faker: FakerService) {
+    this.posts = this.faker.posts;
+    this.posts$ = this.faker.posts.asObservable();
   }
 
-  readDocuments(docs) {
-    return docs.reduce((acc, doc) => ({ ...acc, [doc.id]: doc }), {});
-  }
-
-  getPosts() {
-    return of(Object.keys(this.documents).map(id => this.documents[id]));
-  }
-
-  getPost(url: string) {
-    return of(this.documents[url] ? { data: this.documents[url] } : { errors: [{ message: 'Not found' }] });
+  getPost(id: string) {
+    const posts = this.faker.posts.getValue();
+    return of(posts.find(post => post.id === id));
   }
 }

@@ -12,6 +12,7 @@ export const appLayout: UiLayout = {
     style: 'dark',
     links: [
       { path: '/home', label: 'Home', icon: 'mr-2 fa fa-fw fa-home' },
+      { path: '/feed', label: 'Feed', icon: 'mr-2 fa fa-fw fa-comments' },
       { path: '/docs', label: 'Docs', icon: 'mr-2 fa fa-fw fa-book' },
       { path: '/blog', label: 'Blog', icon: 'mr-2 fa fa-fw fa-rss' },
       { path: '/login', label: 'Auth', icon: 'mr-2 fa fa-fw fa-lock' },
@@ -20,10 +21,10 @@ export const appLayout: UiLayout = {
     ],
   },
   footer: {
-    html: `Copyright <a href="">kikstart.dev</a> 2019.`,
+    html: `<small class="text-muted">Copyright <a href="">kikstart.dev</a> 2019-${new Date().getFullYear()}.</small>`,
     links: [
-      { url: 'https://github.com/beeman', label: '', icon: 'fa fa-fw fa-2x fa-github' },
-      { url: 'https://twitter.com/beeman_nl', label: '', icon: 'fa fa-fw fa-2x fa-twitter' },
+      { url: 'https://github.com/beeman', label: '', icon: 'fa fa-fw fa-github' },
+      { url: 'https://twitter.com/beeman_nl', label: '', icon: 'fa fa-fw fa-twitter' },
     ],
   },
 };

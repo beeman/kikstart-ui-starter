@@ -2,7 +2,7 @@ import { FormHelper } from '@kikstart/ui';
 import { appLayout } from '../../app.config';
 
 export class AuthWebHelper {
-  static brand = { ...appLayout.brand, size: 'lg' };
+  static brand = appLayout.brand;
   static footer = appLayout.footer;
   static loginLink = { path: '/login', label: 'Log in' };
   static logoutLink = { path: '/logout', label: 'Logging out...' };
