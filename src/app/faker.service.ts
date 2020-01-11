@@ -1,31 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as faker from 'faker';
 import { BehaviorSubject, of } from 'rxjs';
+import { UiComment, UiUser } from '@kikstart/ui';
 import { sortBy } from 'lodash';
 
-export interface FakeUser {
-  id: string;
-  username: string;
-  name: string;
-  avatar: string;
-}
-
-export interface FakeStatus {
-  id: string;
-  text: string;
-  created: Date;
-  author: FakeUser;
-  comments?: FakeStatus[];
-  commentCount?: number;
-}
 export interface FakePost {
   id: string;
   title: string;
   slug: string;
   content: string;
   created: Date;
-  author: FakeUser;
-  comments?: FakeStatus[];
+  author: UiUser;
+  comments?: UiComment[];
   commentCount?: number;
 }
 
@@ -34,9 +20,9 @@ const randInt = (min: number, max: number) => Math.floor(Math.random() * (max - 
 @Injectable({ providedIn: 'root' })
 export class FakerService {
   public posts = new BehaviorSubject<FakePost[]>([]);
-  public status = new BehaviorSubject<FakeStatus[]>([]);
-  public user = new BehaviorSubject<FakeUser>(null);
-  public users = new BehaviorSubject<FakeUser[]>([]);
+  public status = new BehaviorSubject<UiComment[]>([]);
+  public user = new BehaviorSubject<UiUser>(null);
+  public users = new BehaviorSubject<UiUser[]>([]);
 
   constructor() {
     this.init();
@@ -48,18 +34,17 @@ export class FakerService {
     this.updatePosts(50);
   }
 
-  private getRandomUser(): FakeUser {
+  private getRandomUser(): UiUser {
     const users = this.users.getValue();
 
     return users[Math.floor(Math.random() * users.length)];
   }
 
-  public addStatus(status: FakeStatus) {
+  public addStatus(status: UiComment) {
     this.status.next([status, ...this.status.getValue()]);
   }
 
-  public updateStatus(status: FakeStatus) {
-    console.log({ updateStatus: status });
+  public updateStatus(status: UiComment) {
     this.status.next([
       ...this.status.getValue().map(item => {
         return item.id === status.id ? status : item;
@@ -72,7 +57,7 @@ export class FakerService {
     return of(true);
   }
 
-  private generateUser(id: string): FakeUser {
+  private generateUser(id: string): UiUser {
     // TODO: fixed by this PR https://github.com/DefinitelyTyped/DefinitelyTyped/pull/41453/files
     // @ts-ignore
     const { name, username, avatar } = faker.helpers.contextualCard();
@@ -80,7 +65,7 @@ export class FakerService {
   }
 
   private updateUsers(amount: number) {
-    const items: FakeUser[] = [];
+    const items: UiUser[] = [];
 
     for (let i = 0; i < amount; i++) {
       items.push(this.generateUser(i.toString()));
@@ -91,7 +76,7 @@ export class FakerService {
     this.user.next(this.getRandomUser());
   }
 
-  private generateStatus(id: string, generateComments = false): FakeStatus {
+  private generateStatus(id: string, generateComments = false): UiComment {
     const comments = generateComments ? this.generateStatuses(randInt(0, 10)) : undefined;
 
     return {
@@ -105,7 +90,7 @@ export class FakerService {
   }
 
   private generateStatuses(amount: number, comments = false) {
-    const items: FakeStatus[] = [];
+    const items: UiComment[] = [];
 
     for (let i = 0; i < amount; i++) {
       items.push(this.generateStatus(i.toString(), comments));

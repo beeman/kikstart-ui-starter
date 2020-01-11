@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { delay, map, switchMap, tap } from 'rxjs/operators';
+import { UiComment, UiUser } from '@kikstart/ui';
+
 import { FeedService } from '../services/feed.service';
-import { FakeStatus, FakeUser } from '../../faker.service';
 
 @Component({
   template: `
@@ -14,14 +15,9 @@ import { FakeStatus, FakeUser } from '../../faker.service';
             <ng-container *ngIf="data$ | async as status">
               <ui-comment
                 class="mb-3"
-                [avatar]="status.author.avatar"
-                [username]="status.author.username"
-                [name]="status.author.name"
-                [link]="['/feed', status.id]"
-                [text]="status.text"
-                [time]="status.created"
+                [comment]="status"
                 [deleteButton]="status.author.id === user.id"
-                (delete)="deleteStatus(status.id)"
+                (action)="handleStatusAction($event)"
               >
               </ui-comment>
 
@@ -33,13 +29,9 @@ import { FakeStatus, FakeUser } from '../../faker.service';
               <ng-container *ngFor="let comment of status.comments">
                 <ui-comment
                   class="mb-3"
-                  [avatar]="comment.author.avatar"
-                  [username]="comment.author.username"
-                  [name]="comment.author.name"
-                  [text]="comment.text"
-                  [time]="comment.created"
+                  [comment]="comment"
                   [deleteButton]="comment.author.id === user.id"
-                  (delete)="deleteComment(status.id, comment.id)"
+                  (action)="deleteComment(status.id, comment.id)"
                 >
                 </ui-comment>
               </ng-container>
@@ -62,26 +54,20 @@ import { FakeStatus, FakeUser } from '../../faker.service';
 })
 export class FeedDetailComponent implements OnInit {
   public id: string;
-  public user: FakeUser;
-  public data$: Observable<FakeStatus>;
+  public user: UiUser;
+  public data$: Observable<UiComment>;
   public reset = new BehaviorSubject(true);
   public reset$ = this.reset.asObservable();
 
-  constructor(public route: ActivatedRoute, public service: FeedService) {}
+  constructor(public route: ActivatedRoute, public router: Router, public service: FeedService) {}
 
   ngOnInit() {
     this.user = this.service.user;
     this.data$ = this.route.params.pipe(
       map(params => params.id),
       tap(id => (this.id = id)),
-      switchMap(url => this.service.getStatus(url)),
+      switchMap(url => this.service.getStatus(url).pipe(map(FeedService.prepStatus))),
     );
-  }
-
-  deleteStatus(id: string) {
-    this.service.deleteStatus({ id }).subscribe(res => {
-      console.log('status deleted', res);
-    });
   }
 
   deleteComment(statusId: string, id: string) {
@@ -98,5 +84,18 @@ export class FeedDetailComponent implements OnInit {
         tap(() => this.reset.next(true)),
       )
       .subscribe();
+  }
+
+  handleStatusAction({ type, payload }) {
+    switch (type) {
+      case 'DELETE':
+        return this.service.deleteStatus(payload).subscribe(() => {
+          this.router.navigate(['/feed']);
+        });
+      case 'LIKE':
+        return console.log('LIKE not implemented yet');
+      default:
+        console.log(`Unhandled action ${type}`, payload);
+    }
   }
 }

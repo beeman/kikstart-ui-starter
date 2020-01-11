@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { ButtonHelper, UiComment, UiUser } from '@kikstart/ui';
 
-import { FakerService, FakeStatus, FakeUser } from '../../faker.service';
+import { FakerService } from '../../faker.service';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class FeedService {
-  user: FakeUser;
+  user: UiUser;
 
-  public status: BehaviorSubject<FakeStatus[]>;
-  public status$: Observable<FakeStatus[]>;
+  public status: BehaviorSubject<UiComment[]>;
+  public status$: Observable<UiComment[]>;
 
   constructor(private faker: FakerService) {
     this.status = this.faker.status;
@@ -18,12 +19,43 @@ export class FeedService {
     this.user = this.faker.user.getValue();
   }
 
+  static prepComment(comment: UiComment): UiComment {
+    return {
+      ...comment,
+      author: {
+        ...comment.author,
+        path: '/profile/' + comment.author.username,
+      },
+      buttons: [ButtonHelper.like({ label: 'Like' })],
+    };
+  }
+
+  static prepStatus(comment: UiComment): UiComment {
+    const { comments = [] } = comment;
+    return {
+      ...comment,
+      author: {
+        ...comment.author,
+        path: '/profile/' + comment.author.username,
+      },
+      path: '/feed/' + comment.id,
+      comments: comments.length ? comments.map(c => FeedService.prepComment(c)) : null,
+      buttons: [
+        ButtonHelper.like({ label: 'Like' }),
+        ButtonHelper.comment({
+          label: (comment.commentCount ? comment.commentCount : 0) + ' Comments',
+          path: '/feed/' + comment.id,
+        }),
+      ],
+    };
+  }
+
   getStatus(id: string) {
     return of(this.status.getValue().find(i => i.id === id));
   }
 
   createStatus({ text }: { text: string }) {
-    const status: FakeStatus = {
+    const status: UiComment = {
       id: new Date().getTime().toString(),
       created: new Date(),
       author: this.user,
@@ -34,7 +66,7 @@ export class FeedService {
   }
 
   createComment({ statusId, text }: { statusId: string; text: string }) {
-    const comment: FakeStatus = {
+    const comment: UiComment = {
       id: new Date().getTime().toString(),
       created: new Date(),
       author: this.user,

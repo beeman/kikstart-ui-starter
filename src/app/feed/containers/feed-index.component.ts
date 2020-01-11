@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { UiService } from '@kikstart/ui';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ButtonHelper, UiComment, UiService, UiUser } from '@kikstart/ui';
 
 import { FeedService } from '../services/feed.service';
-import { delay, switchMap, tap } from 'rxjs/operators';
-import { FakeStatus, FakeUser } from '../../faker.service';
+import { delay, map, tap } from 'rxjs/operators';
+import { log } from 'util';
 
 @Component({
   template: `
@@ -26,14 +25,9 @@ import { FakeStatus, FakeUser } from '../../faker.service';
               <ui-comment
                 *ngFor="let status of statuses"
                 class="mb-3"
-                [avatar]="status.author.avatar"
-                [username]="status.author.username"
-                [name]="status.author.name"
-                [link]="['/feed', status.id]"
-                [text]="status.text"
-                [time]="status.created"
+                [comment]="status"
                 [deleteButton]="status.author.id === user.id"
-                (delete)="deleteStatus(status)"
+                (action)="handleAction($event)"
               >
               </ui-comment>
             </ng-container>
@@ -44,8 +38,8 @@ import { FakeStatus, FakeUser } from '../../faker.service';
   `,
 })
 export class FeedIndexComponent implements OnInit {
-  public user: FakeUser;
-  public statuses$: Observable<FakeStatus[]>;
+  public user: UiUser;
+  public statuses$: Observable<UiComment[]>;
   public reset = new BehaviorSubject(true);
   public reset$ = this.reset.asObservable();
 
@@ -53,12 +47,8 @@ export class FeedIndexComponent implements OnInit {
 
   ngOnInit() {
     this.ui.setMetaData({ title: 'Feed' });
-    this.statuses$ = this.service.status$;
+    this.statuses$ = this.service.status$.pipe(map(items => items.map(FeedService.prepStatus)));
     this.user = this.service.user;
-  }
-
-  deleteStatus(comment: any) {
-    this.service.deleteStatus(comment);
   }
 
   createStatus({ payload }) {
@@ -69,5 +59,16 @@ export class FeedIndexComponent implements OnInit {
         tap(() => this.reset.next(true)),
       )
       .subscribe();
+  }
+
+  handleAction({ type, payload }) {
+    switch (type) {
+      case 'DELETE':
+        return this.service.deleteStatus(payload);
+      case 'LIKE':
+        return console.log('LIKE not implemented yet');
+      default:
+        console.log(`Unhandled action ${type}`, payload);
+    }
   }
 }
