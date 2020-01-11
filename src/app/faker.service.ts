@@ -58,8 +58,6 @@ export class FakerService {
   }
 
   private generateUser(id: string): UiUser {
-    // TODO: fixed by this PR https://github.com/DefinitelyTyped/DefinitelyTyped/pull/41453/files
-    // @ts-ignore
     const { name, username, avatar } = faker.helpers.contextualCard();
     return { id, name, username, avatar };
   }
