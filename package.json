@@ -24,7 +24,7 @@
     "@ctrl/ngx-numbered-codeblock": "2.0.0",
     "@kikstart/ui": "1.16.0",
     "@ngx-formly/bootstrap": "5.5.8",
-    "@ngx-formly/core": "5.5.8",
+    "@ngx-formly/core": "5.5.9",
     "@types/faker": "4.1.9",
     "bootstrap": "4.4.1",
     "bootswatch": "4.4.1",
