@@ -894,10 +894,10 @@
     "@types/prismjs" "^1.16.0"
     tslib "^1.9.0"
 
-"@kikstart/ui@1.16.0":
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.16.0.tgz#a47752e14afdbb063f0192bfa2b0c6d2898328ce"
-  integrity sha512-Afmx8lrdoTgwFWPS7Q+XihvBwnUzBTWdsrJg2VBj6V1AbYXLlhXoBHfiV/UGcuge5XrYhMb8ojiprtpD4lYv5w==
+"@kikstart/ui@1.19.0":
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.19.0.tgz#0c3ae39f59b17c9f52b8de9129f09948cbf9915f"
+  integrity sha512-ekfYWETQ9rTg9G9KvCLxm1d22R7/W0ai9LiQykAKXacOJnHfHKhzQ9wMpl2PoKaz+1ruMnIcbYfDracyLs5www==
   dependencies:
     tslib "^1.9.0"
 
