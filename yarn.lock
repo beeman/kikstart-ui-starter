@@ -1003,13 +1003,12 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@ctrl/ngx-numbered-codeblock@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@ctrl/ngx-numbered-codeblock/-/ngx-numbered-codeblock-2.0.0.tgz#0f0140016bc508d9d57149ad05a278234371f69f"
-  integrity sha512-/NOivtf8HEiJyEduccRv/if02+rV8fFbpGg3FHs9oPfAV+wPwZov1bq0D0megnbAF8Ki76TJ9TQ9IPuqqTHgdQ==
+"@ctrl/ngx-numbered-codeblock@3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@ctrl/ngx-numbered-codeblock/-/ngx-numbered-codeblock-3.0.0.tgz#e1c1f194aefc5d6acd8073b9c53aa4eef9f55b24"
+  integrity sha512-XhzjEYNlQaVNWLPO/+8ck/GSTrbJ6T1etA1W6C0Aj2D7y3x5GqjfcqirucfRAwOw6JtHBTrXWYEOI7rmUHu8ew==
   dependencies:
     "@types/prismjs" "^1.16.0"
-    tslib "^1.9.0"
 
 "@istanbuljs/schema@^0.1.2":
   version "0.1.2"
