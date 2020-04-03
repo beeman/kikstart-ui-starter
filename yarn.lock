@@ -1155,10 +1155,10 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.6.4"
 
-"@kikstart/ui@1.21.2":
-  version "1.21.2"
-  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.21.2.tgz#60654f13fc58bd83271e866f067351f7819ab3d8"
-  integrity sha512-mJBJlDOHRgnKI1yF7NG1fLge6ZbLoPngU8nbfFgww9pjIn/mUR30wkiBxPinutUp8TcFG84BmCklXrrlQidPhA==
+"@kikstart/ui@1.27.1":
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/@kikstart/ui/-/ui-1.27.1.tgz#3cbfcbb6781ed5e448d8daf145f9194430e11cd2"
+  integrity sha512-NSWgkkuH836bx2hSLaxFphd412nERQWHk2dj2DKGnXLw5c1IOrvkr98zHX1hKB6xkwqJFNe9DdvoB2HzHOjmoQ==
 
 "@ngtools/webpack@9.1.0":
   version "9.1.0"
