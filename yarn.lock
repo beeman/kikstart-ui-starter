@@ -6125,10 +6125,12 @@ ngx-timeago@1.0.4:
   dependencies:
     tslib "^1.9.0"
 
-ngx-toastr@12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-12.0.0.tgz#1b35a4e5b785246c558e091c831a26ebf211cfd7"
-  integrity sha512-J0mvGXH9cLlP3acoLJcuYhsQcL+EOAtkS1Y5tFKzrw2TYqY2HNffMVPvK+KP1LDJHiIgRpYg3ZELw1raAl0R/A==
+ngx-toastr@12.1.0:
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-12.1.0.tgz#50f6eee4262f4ba342918f06f98a657f223194cf"
+  integrity sha512-rytCRBhvuudj614Kfj9GoIVQDrFuLvHSMP1YrMwTmR1SNkNJZOpGKmaSDCCBrNDkSrGouzMWBlFbl1UDBBsiqw==
+  dependencies:
+    tslib "^1.10.0"
 
 nice-try@^1.0.4:
   version "1.0.5"
