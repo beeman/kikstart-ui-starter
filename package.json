@@ -21,7 +21,7 @@
     "@angular/platform-browser": "9.1.6",
     "@angular/platform-browser-dynamic": "9.1.6",
     "@angular/router": "9.1.6",
-    "@ctrl/ngx-numbered-codeblock": "3.0.0",
+    "@ctrl/ngx-numbered-codeblock": "3.0.1",
     "@kikstart/ui": "1.21.2",
     "@ngx-formly/bootstrap": "5.5.12",
     "@ngx-formly/core": "5.5.12",
