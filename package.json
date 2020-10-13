@@ -26,7 +26,7 @@
     "@ngx-formly/bootstrap": "5.5.12",
     "@ngx-formly/core": "5.5.12",
     "@types/faker": "4.1.9",
-    "bootstrap": "4.4.1",
+    "bootstrap": "4.5.3",
     "bootswatch": "4.4.1",
     "faker": "4.1.0",
     "font-awesome": "4.7.0",
